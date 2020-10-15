@@ -1,0 +1,28 @@
+.card {
+    position: relative;
+    // margin: 1.8rem auto;
+    // width: 100%;
+    border-radius: 1.2rem;
+    box-shadow: $elevation-2;
+    cursor: pointer;
+    padding: 2.4rem;
+    transition: .08s linear; 
+  
+    background-color: white;
+    color: $text-primary;
+
+    // Non sembra funzionare
+    -webkit-touch-callout:none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust:none;             /* prevent webkit from resizing text to fit */
+    -webkit-tap-highlight-color:rgba(0,0,0,0); /* prevent tap highlight color / shadow */
+    -webkit-user-select:none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    
+  
+    &:hover {
+      // box-shadow: $elevation-4;
+    }
+
+    &:active {
+      box-shadow: $elevation-0;
+    }
+}

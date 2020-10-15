@@ -1,0 +1,86 @@
+<div class="component-wrapper" *ngIf="pitchData">
+    <div class="component-head">
+        <div class="home-squad-info">
+            <div class="home-squad-name-formation">
+                <div class="home-squad-name">{{pitchData.home}}</div>
+                <div class="home-squad-formation">{{pitchData.home_formation}}</div>
+            </div>
+            <div class="home-squad-icon"></div>
+        </div>
+        <div class="divider">-</div>
+        <div class="away-squad-info">
+            <div class="away-squad-icon"></div>
+            <div class="away-squad-name-formation">
+                <div class="away-squad-name">{{pitchData.away}}</div>
+                <div class="away-squad-formation">{{pitchData.away_formation}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="component-body" cdkDropListGroup>
+
+        <!-- home bench -->
+        <div class="card home-bench bench">
+            <div class="bench-head">
+                <div class="home-squad-icon"></div>
+                <div class="bench-head-info">
+                    <div class="bench-title">{{pitchData.home}}</div>
+                    <div class="bench-subtitle">Home squad</div>
+                </div>
+            </div>
+
+            <div class="bench-players" *ngIf="homeBench">
+                <div class="bench-player-container" *ngFor="let player of homeBench; let playerIndex = index;">
+                    <div class="card bench-player home-bench-player" id="homeBench{{player.player_id}}" (drop)="!isTouch && drop($event, true, true)" (dragover)="!isTouch && allowDrop($event)" draggable="{{!isTouch}}" (dragstart)="!isTouch && drag($event, true, true)" (touchend)="isTouch && drop($event, true, true)" (touchstart)="isTouch && drag($event, true, true)">
+                        {{player.player_name}} ({{player.player_number}})
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- pitch -->
+        <div class="pitch">
+            <img src="assets/images/pitch-background.png" >
+
+            <!-- home formation -->
+            <div *ngIf="homeFormation" class="pitch-home-formation formation-players">
+                <div class="formation-player-drag-box" *ngFor="let player of homeFormation; let playerIndex = index;" [ngStyle]="{'top': positions[player.position].top, 'left': positions[player.position].left}">
+                    <div class="card formation-player home-player" id="homeFormation{{player.player_id}}" (drop)="!isTouch && drop($event, true, false)" (dragover)="!isTouch && allowDrop($event)" draggable="{{!isTouch}}" (dragstart)="!isTouch && drag($event, true, false)" (touchend)="isTouch && drop($event, true, false)" (touchstart)="isTouch && drag($event, true, false)">
+                        {{player.player_number}}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- away formation -->
+            <div *ngIf="awayFormation" class="pitch-away-formation formation-players">
+                <div class="formation-player-drag-box" *ngFor="let player of awayFormation; let playerIndex = index;" [ngStyle]="{'top': 'calc(100% - ' + positions[player.position].top + ')', 'left': 'calc(100% - ' + positions[player.position].left + ')'}">
+                    <div class="card formation-player away-player" id="awayFormation{{player.player_id}}" (drop)="!isTouch && drop($event)" (dragover)="!isTouch && allowDrop($event)" draggable="{{!isTouch}}" (dragstart)="!isTouch && drag($event)" (touchend)="isTouch && drop($event)" (touchstart)="isTouch && drag($event)">
+                        {{player.player_number}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- away bench -->
+        <div class="card away-bench bench">
+            <div class="bench-head">
+                <div class="away-squad-icon"></div>
+                <div class="bench-head-info">
+                    <div class="bench-title">{{pitchData.away}}</div>
+                    <div class="bench-subtitle">Away squad</div>
+                </div>
+            </div>
+
+            <div class="bench-players" *ngIf="awayBench">
+                <div class="bench-player-container" *ngFor="let player of awayBench; let playerIndex = index;">
+                    <div class="card bench-player away-bench-player" id="awayBench{{player.player_id}}" (drop)="!isTouch && drop($event)" (dragover)="!isTouch && allowDrop($event)" draggable="{{!isTouch}}" (dragstart)="!isTouch && drag($event)" (touchend)="isTouch && drop($event)" (touchstart)="isTouch && drag($event)">
+                        {{player.player_name}} ({{player.player_number}})
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

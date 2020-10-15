@@ -1,0 +1,201 @@
+@import "~src/assets/styles/common";
+
+$homecolor: #02a6a7;
+$awaycolor: #235355;
+$darkgrey: #4f4f4f;
+
+.component-wrapper {
+  position: relative; 
+  width: 100%; 
+  padding: 2.4rem;
+  color: $darkgrey;
+
+  .component-head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .home-squad-info, .away-squad-info {
+      display: flex;
+      width: 50%;
+      align-items: center;
+
+      &.home-squad-info {
+        justify-content: flex-end;
+      }
+      &.away-squad-info {
+        justify-content: flex-start;
+      }
+
+      .home-squad-name-formation, .away-squad-name-formation {
+        display: flex;
+        flex-direction: column;
+
+        .home-squad-formation, .away-squad-formation {
+          font-size: 1.4rem;
+          letter-spacing: 2px;
+          font-weight: 500;
+        }
+
+        &.home-squad-name-formation {
+          align-items: flex-end;
+        }
+        &.away-squad-name-formation {
+          align-items: flex-start;
+        }
+      }
+    }
+  }
+
+  .component-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .bench {
+      width: 100%;
+      max-width: 200px;
+      max-height: 400px;
+      overflow-y: scroll;
+
+      .bench-head {
+        display: flex;
+
+        .bench-head-info {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-evenly;
+          flex-direction: column;
+          margin: 0;
+
+          .bench-title, .bench-subtitle {
+            margin: 0;
+  
+            &.bench-title {
+              font-weight: bold;
+              font-size: 15px;
+            }
+          }
+        }
+      }
+
+      .bench-player {
+        margin: 1.2rem;
+        padding: 0.6rem;
+        color: white;
+
+        &.home-bench-player {
+          background-color: $homecolor;
+        }
+        &.away-bench-player {
+          background-color: $awaycolor;
+        }
+      }
+    }
+
+    .pitch {
+      margin: 0 1.2rem;
+      position: relative;
+
+      img {
+        width: 100%;
+      }
+
+      .pitch-home-formation, .pitch-away-formation {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        top: 0;
+
+        &.pitch-home-formation {
+          left: 0;
+        }
+        &.pitch-away-formation {
+          left: 50%;
+        }
+
+        .formation-player-drag-box {
+          position: absolute;
+          width: 4.8rem;
+          height: 4.8rem;
+          border-radius: 50%;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transform: translate(-50%, -50%);
+
+          .formation-player {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &.home-player, &.away-player {
+              color: white;
+              border: 2px solid white;
+              &.home-player {
+                background-color: $homecolor;
+              }
+              &.away-player {
+                background-color: $awaycolor;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: $break_tab_port) {
+      & {
+        flex-wrap: wrap;
+      }
+
+      .pitch {
+        margin: 0;
+
+        .formation-players {
+          .formation-player-drag-box {
+            width: 3.6rem;
+            height: 3.6rem;
+          }
+        }
+      }
+      .bench {
+        max-width: initial;
+        margin: 1.2rem 0;
+
+        .bench-players {
+          display: flex;
+          justify-content: space-evenly;
+          flex-wrap: wrap;
+
+          .bench-player-container {
+            .bench-player {
+              margin: 0.6rem 0.3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .home-squad-icon, .away-squad-icon {
+    width: 40px;
+    height: 40px;
+    margin: 1.2rem;
+    
+    &.home-squad-icon {
+      background: $homecolor;
+    }
+    &.away-squad-icon {
+      background: $awaycolor;
+    }
+  }
+
+}

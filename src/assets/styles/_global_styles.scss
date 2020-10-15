@@ -1,0 +1,73 @@
+// Our default
+@import "~src/assets/styles/common";
+
+//** Global Style */
+* {
+    box-sizing: border-box;
+  }
+
+  html {
+    width: 100%;
+    font-size: 50%;
+  }
+
+  body {
+    background-color: #F9F9F9;
+    position: relative;
+    font-family: sans-serif;
+    font-size: 1.8rem;
+
+    line-height: 145%;
+    font-weight: 400;
+
+    color: $text-primary;
+    font-variant: tabular-nums;
+    -moz-font-feature-settings: "tnum";
+    -webkit-font-feature-settings: "tnum";
+    font-feature-settings: "tnum";
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-font-feature-settings: "liga";
+    -moz-font-feature-settings: "liga";
+    -ms-font-feature-settings: "liga";
+    -o-font-feature-settings: "liga";
+    -webkit-font-feature-settings: "liga";
+    font-feature-settings: "liga";
+    font-variant-ligatures: common-ligatures;
+  }
+
+
+  // Global resposive
+  /*
+  $break_phone: 37.5em; //600px
+  $break_tab_port: 56.25em; //900px
+  $break_tab_land: 75em;
+  $break_desk_big: 112.5em;
+  */
+
+  // desktop first
+  @media screen and (max-width: $break_tab_land) {
+    html {
+      font-size: 50%;
+    }
+
+  }
+
+  @media screen and (max-width: $break_tab_port) {
+    html {
+      font-size: 50%;
+    }
+  }
+
+  @media screen and (max-width: $break_phone) {
+    html {
+      font-size: 50%;
+    }
+  }
+
+  @media screen and (min-width: $break_desk_big) {
+    html {
+      font-size: 56.25%;
+    }
+  }
